@@ -6,18 +6,23 @@ before_install:
   - docker build -t dominic70/docker-react -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true dominic70/docker-react npm run test
-  # - docker run dominic70/docker-react npm run test -- --coverage <--does not exit test
-
+  # - docker run -e CI=true dominic70/docker-react npm run test
+  - docker run dominic70/docker-react npm run test -- --coverage #<--does not exit test
+# Dockerreact-env.eba-4cvxhsgi.eu-west-2.elasticbeanstalk.com
 deploy:
   provider: elasticbeanstalk
-  region: "us-west-2" #Where you created the elasticbeanstalk instance
+  region: "eu-west-2" #Where you created the elasticbeanstalk instance
   app: "docker-react" #name given to the app during creation of elasticbeanstalk instance
-  env: "Docker-env"
-  bucket_name: "elasticbeanstalk-us-west-2-306376627547" #AWS > services > s3 > get matching with the region
+  env: "Dockerreact-env"
+  bucket_name: "elasticbeanstalk-eu-west-2-661394686668" #AWS > services > s3 > get matching with the region
   bucket_path: "docker-react" #Name of the app
   on:
-    branch:master
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY # <Name in travis>
+  secrete_access_key:
+    secure: "$AWS_SECRETE_KEY" # <Name in travis>
+
+
 
     #Generate the keys in AWS
       #AWS > iam(manage API Keys) > users > add user > Enter user name
@@ -27,8 +32,5 @@ deploy:
         #Create user. And API key will be created
     #Use ACCESS KEYS ID and SECRETE ACCESS KEY <Do not use them directly for security reasons>
       # Go to Travis web > your repo > settings > enviroment variables > add a name and value.
-  access_key_id: $AWS_ACCESS_KEY # <Name in travis>
-  secrete_access_key:
-    secure: "$AWS_SECRETE_KEY" # <Name in travis>
 
-      
+    
