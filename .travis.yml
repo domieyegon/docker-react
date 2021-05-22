@@ -6,8 +6,8 @@ before_install:
   - docker build -t dominic70/docker-react -f Dockerfile.dev .
 
 script:
-  # - docker run -e CI=true dominic70/docker-react npm run test
-  - docker run dominic70/docker-react npm run test -- --coverage #<--does not exit test
+  - docker run -e CI=true dominic70/docker-react npm run test
+  # - docker run dominic70/docker-react npm run test -- --coverage #<--does not exit test
 # Dockerreact-env.eba-4cvxhsgi.eu-west-2.elasticbeanstalk.com
 deploy:
   provider: elasticbeanstalk
