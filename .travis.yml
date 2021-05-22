@@ -19,8 +19,8 @@ deploy:
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY # <Name in travis>
-  secrete_access_key:
-    secure: "$AWS_SECRETE_KEY" # <Name in travis>
+  secrete_access_key: $AWS_SECRETE_KEY #new change
+    # secure: "$AWS_SECRETE_KEY" # <Name in travis>
 
 
 
