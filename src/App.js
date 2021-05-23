@@ -7,15 +7,15 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Hello World!!. Getting Started with <b>React</b>
+          <b>DOMINIC K. YEGON</b>
         </p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://dominicyegon.herokuapp.com/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          View My Profile
         </a>
       </header>
     </div>
